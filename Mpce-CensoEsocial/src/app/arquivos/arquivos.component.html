@@ -1,0 +1,93 @@
+<ng-template #content let-modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Anexar documentos</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="loading" *ngIf="loading">
+    <img src="./assets/img/carregando.gif" width="80"/>
+ </div>
+  <div class="modal-body">
+    <form [formGroup]="arquvosForm" novalidate>
+          <div class="row" style="margin-left: 15px;">
+            <ul>
+              <li style="color: black; font-weight: bold; font-size: 20px; list-style: none">{{vrmsgstatico}}</li>
+              <li style="color: black; font-size: 15px;">{{vrmessage}}</li>
+              <li style="color: black; font-size: 15px;" *ngIf="(vrmessage1!='')">{{vrmessage1}}</li>
+              <li style="color: black; font-size: 15px;" *ngIf="(vrmessage2!='')">{{vrmessage2}}</li>
+              <li style="color: black; font-size: 15px; list-style: none">{{vrmmsgobs}}</li>
+            </ul>
+          </div>
+          <div class="row">
+              <!-- COLUNA-->
+              <div class="col-md-4">
+                <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                <label>Tipo de Documento</label>
+                <select class="custom-select" id="sTipo" name="sTipo"  
+                formControlName="sTipo" ng-selected="this.vrstipo" 
+                [class.is-valid]="isValid('sTipo')" [class.is-invalid]="isInvalid('sTipo')">
+                  <option value="">Selecione</option>
+                  <option value="CPF">CPF</option>
+                  <option value="Certidão de Casamento / Comprovação de Divórcio">Certidão de Casamento / Comprovação de Divórcio</option>
+                  <option value="NIS/PIS/PASEP">NIS/PIS/PASEP</option>
+                  <option value="Comissionado Exclusivo">Comissionado Exclusivo</option>  
+                  <option value="Certificado/Declaração Escolar">Certificado/Declaração Escolar</option>  
+                  <option value="CTPS">CTPS</option>  
+                  <option value="RG">RG</option>  
+                  <option value="CNH">CNH</option>  
+                  <option value="Comprovante de Residência">Comprovante de Residência</option>  
+                  <option value="Comprovante de Dependência">Comprovante de Dependência</option>  
+                  <option value="CPF do Dependente">CPF do Dependente</option>  
+                  <option value="CNPJ da Empresa Cedente">CNPJ da Empresa Cedente</option>  
+                  <option value="CPF do Beneficiário">CPF do Beneficiário</option>  
+                </select>
+                <div *ngIf="isInvalid('sTipo')" style="color: red">Campo obrigatório</div>
+              </div>   
+              <!-- FIM COLUNA-->
+              <!-- COLUNA-->
+                <div class="col-md-7">
+                  <label>Arquivo <span style="color: red">(Extensão: pdf, Tamanho Max: 2Mb)</span></label>
+                  <input type="file" (change)="onFileChange($event)" class="form-control"/>
+              </div>
+              <!-- FIM COLUNA-->
+        </div>
+        <div class="row">
+            <div class="col-md-3 ">
+                <button class="btn btn-primary" type="button"  (click)="onSubmit()" 
+                [disabled]="!arquvosForm.valid">Anexar</button>
+            </div>
+        </div>
+        <div class="divtable" *ngIf="arquivos.length > 0">
+          <table class="row-border hover" border="1" style="width: 700px">
+            <thead>
+                <tr>
+                  <th width="134" style="text-align: center">Tipo</th>
+                  <th width="250" style="text-align: center">Arquivo</th>
+                  <th width="134" style="text-align: center">Operações</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let arquivo of arquivos">
+                    <th style="padding-left: 5px;">{{ arquivo.sTipo }}</th>
+                    <th style="padding-left: 5px;">{{ arquivo.sNomeArquivo }}</th>
+                    <th style="text-align: center;">
+                        <a href="javascript: void(0)" (click)="baixar(arquivo)"  
+                        title="Visualizar Documento">
+                            <i class="material-icons">download</i>
+                        </a>
+                        &nbsp;|&nbsp;
+                        <a href="javascript:void(0);" (click)="excluirArquivo(arquivo.iCodigo)" title="Excluir Documento">
+                            <i class="material-icons">excluir</i>
+                        </a>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        </div>                        
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="d('Cross click')">Prosseguir</button>
+  </div>
+</ng-template>

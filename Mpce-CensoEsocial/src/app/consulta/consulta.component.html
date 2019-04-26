@@ -1,0 +1,415 @@
+<div style="text-align: center">
+  <h3>Procuradoria Geral de Justiça - Censo Esocial</h3>
+</div>
+<div>
+      <div class="row">
+          <div class="col-xs-6" style="padding-left:26px;">
+              <h5><b>Dados Principais</b></h5>
+          </div>
+         <div class="col-xs-6" style="margin-left: 75%">
+             <label>
+                 <a href="javascript:void(0)" onclick="window.print();">Imprimir</a>
+                 |
+                 <a href="javascript:void(0)" onclick="history.go(-1);">Sair</a>
+             </label> 
+          </div>
+      </div>
+  <table width="98%" cellpadding="2" cellspacing="2" class="comBordaSimples" style="margin-left:10px;">
+      <tr style="background-color: #EEE9E9">
+          <td width="9%">
+              <b>Tipo de Trabalhador:</b>
+          </td>
+          <td width="18%">
+              {{trabalhador.sVinculo}}
+          </td>
+          <td width="12%"><b>Nome:</b></td>
+          <td width="14%">
+                {{trabalhador.sNome}}
+          </td>
+          <td width="8%"><b>Sexo:</b></td>
+          <td width="15%">
+                {{trabalhador.sSexo}}
+          </td>
+          <td width="7%"><b>Estado Civil:</b></td>
+          <td width="17%">
+                {{trabalhador.sEstadoCivil}}
+          </td>
+      </tr>
+      <tr style="background-color: #CDC9C9">
+          <td><b>Raça / Cor:</b></td>
+          <td>
+                {{trabalhador.sRacaCor}}
+          </td>
+          <td><b>CPF:</b></td>
+          <td>
+                {{trabalhador.sCPF}}
+          </td>
+          <td><b>NIS/PIS/PASEP:</b></td>
+          <td>
+                {{trabalhador.sNisPisPasep}}
+          </td>
+          <td><b>Grau de Instrução:</b></td>
+          <td>
+                {{trabalhador.sGrauInstrucao}}
+          </td>
+      </tr>
+      <tr style="background-color: #EEE9E9">
+          <td><b>Primeiro Emprego:</b></td>
+          <td>
+                {{trabalhador.sPrimeiroEmprego}}
+          </td>
+          <td><b>Nome Social Para Travesti Ou Transexual:</b></td>
+          <td colspan="5">
+                {{trabalhador.sNomeTravTrans}}
+            </td>
+      </tr>
+      <tr style="background-color: #CDC9C9">
+          <td><b>Data de Nascimento:</b></td>
+          <td>
+                {{trabalhador.dtDataNasc}}
+          </td>
+          <td><b>UF:</b></td>
+          <td>
+            {{trabalhador.sUfNasc}} 
+          </td>
+          <td><b>Naturalidade:</b></td>
+          <td>
+                {{trabalhador.sMunicipioNasc}}
+          </td>
+          <td><b>País de Nascimento:</b></td>
+          <td>
+                {{trabalhador.sPaisNasc}}
+          </td>
+      </tr>
+      <tr style="background-color: #EEE9E9">
+          <td><b>Nacionalidade:</b></td>
+          <td>
+                {{trabalhador.sNacionalidade}}
+          </td>
+          <td><b>Mãe:</b></td>
+          <td>
+                {{trabalhador.sNomeMae}}
+          </td>
+          <td><b>Pai:</b></td>
+          <td colspan="3">
+                {{trabalhador.sNomePai}}
+          </td>
+      </tr>
+      <tr style="background-color: #CDC9C9">
+          <td><b>Nº CTPS:</b></td>
+          <td>
+                {{trabalhador.sNumCTPS}}
+          </td>
+          <td><b>Nº SÉRIE CTPS:</b></td>
+          <td>
+                {{trabalhador.sNumSerieCTPS}}
+          </td>
+          <td><b>UF CTPS:</b></td>
+          <td>
+                {{trabalhador.sUfCTPS}}
+          </td>
+          <td><b>RG:</b></td>
+          <td>
+                {{trabalhador.sNumRG}}
+          </td>
+      </tr>
+      <tr style="background-color: #EEE9E9">
+          <td><b>Org. Emissor RG - UF:</b></td>
+          <td>
+                {{trabalhador.sEmissaoRG}}
+          </td>
+          <td><b>Data de Expedição RG:</b></td>
+          <td>
+                {{trabalhador.dtExpedRG}}
+          </td>
+          <td><b>Nº CNH:</b></td>
+          <td>
+                {{trabalhador.sNumCNH}}
+          </td>
+          <td><b>Data de Expedição CNH:</b></td>
+          <td>
+                {{trabalhador.dtExpedCNH}}
+          </td>
+      </tr>
+      <tr style="background-color: #CDC9C9">
+          <td><b>UF CNH:</b></td>
+          <td>
+                {{trabalhador.sUfCNH}}
+          </td>
+          <td><b>Data de Validade CNH:</b></td>
+          <td>
+                {{trabalhador.dtValidadeCNH}}
+          </td>
+          <td><b>Categoria CNH:</b></td>
+          <td>
+                {{trabalhador.sCatCNH}}
+          </td>
+          <td><b>Data da 1ª CNH:</b></td>
+          <td>
+                {{trabalhador.dtPrimeiraHab}}
+          </td>
+      </tr>
+      <tr style="background-color: #EEE9E9">
+          <td><b>Data de Expedição (OC):</b></td>
+          <td>
+                {{trabalhador.dtExpedOC}}
+          </td>
+          <td><b>Data de validade (OC):</b></td>
+          <td>
+                {{trabalhador.dtValidadeOC}}
+            </td>
+          <td><b>Nº de Reg. Órg. de Classe (OC):</b></td>
+          <td>
+                {{trabalhador.sNumRegOC}}
+            </td>
+          <td><b>Org. Emissor - UF (OC):</b></td>
+          <td>
+                {{trabalhador.sEmissaoOC}}
+          </td>
+      </tr>
+      <tr style="background-color: #CDC9C9">
+          <td><b>Tipo de Logradouro:</b></td>
+          <td>
+                {{trabalhador.sTipoLogradouro}}
+          </td>
+          <td><b>Logradouro:</b></td>
+          <td>
+                {{trabalhador.sLogradouro}}
+          </td>
+          <td><b>Número:</b></td>
+          <td>
+                {{trabalhador.sNumero}}
+          </td>
+          <td><b>Complemento:</b></td>
+          <td>
+                {{trabalhador.sComplemento}}
+          </td>
+      </tr>
+      <tr style="background-color: #EEE9E9">
+          <td><b>Bairro / Distrito:</b></td>
+          <td>
+                {{trabalhador.sBairro}}
+          </td>
+          <td><b>CEP:</b></td>
+          <td>
+                {{trabalhador.sCEP}}
+          </td>
+          <td><b>UF:</b></td>
+          <td>
+                {{trabalhador.sUfRes}}
+          </td>
+          <td><b>Cidade:</b></td>
+          <td>
+                {{trabalhador.sMunicipioRes}}
+          </td>
+      </tr>
+      <tr style="background-color: #CDC9C9">
+          <td><b>Deficiência Física:</b></td>
+          <td>
+                {{trabalhador.sDefFisica}}
+          </td>
+          <td><b>Deficiência Visual:</b></td>
+          <td>
+                {{trabalhador.sDefVisual}}
+          </td>
+          <td><b>Deficiência Auditiva:</b></td>
+          <td>
+                {{trabalhador.sDefAuditiva}}
+          </td>
+          <td><b>Deficiência Mental:</b></td>
+          <td>
+                {{trabalhador.sDefMental}}
+            </td>
+      </tr>
+      <tr style="background-color: #EEE9E9">
+          <td><b>Deficiência Intelectual:</b></td>
+          <td colspan="7">
+                {{trabalhador.sDefIntelectual}}
+          </td>
+      </tr>
+      <tr style="background-color: #CDC9C9">
+          <td><b>Telefone:</b></td>
+          <td>
+                {{trabalhador.sTelefone1}}
+          </td>
+          <td><b>Celular:</b></td>
+          <td>
+                {{trabalhador.sTelefone2}}
+          </td>
+          <td><b>Email:</b></td>
+          <td>
+                {{trabalhador.sEmail}}
+          </td>
+          <td><b>Email 2:</b></td>
+          <td>
+                {{trabalhador.sEmail2}}
+          </td>
+      </tr>
+      <tr style="background-color: #EEE9E9">
+          <td colspan="4"><b>Recebe Benefício Previdenciário da Aposentadoria por Tempo de Contribuição ou por Idade:</b></td>
+          <td colspan="4">
+                {{trabalhador.sRecebeBeneficioPrev}}
+          </td>
+      </tr>
+  </table>
+  <div *ngIf="dependentes != ''">
+    <div style="margin-top: 35px;padding-left:10px;">
+        <b>Dados do(s) Dependente(s)</b>
+    </div>
+    <table width="98%" cellpadding="2" cellspacing="2" class="comBordaSimples" style="margin-top: 10px;margin-left:10px;" 
+    *ngFor="let dependente of dependentes">
+        <tr style="background-color: #EEE9E9">
+            <td><b>Tipo de Dependente:</b></td>
+            <td>{{dependente.sTipoDependente}}</td>
+            <td><b>Nome do Dependente:</b></td>
+            <td>{{dependente.sNomeDependente}}</td>
+            <td><b>Data de Nascimento:</b></td>
+            <td>{{dependente.dtNasc}}</td>
+        </tr>
+        <tr style="background-color: #CDC9C9">
+            <td><b>CPF:</b></td>
+            <td>{{dependente.sCPFDependente}}</td>
+            <td><b>Dependente do Trabalhador Para Fins de Dedução de IRRF:</b></td>
+            <td>{{dependente.sDepTrabIRRF}}</td>
+            <td><b>Dependente Tem Incapacidade Física ou Mental Para o Trabalho:</b></td>
+            <td>{{dependente.sDepIncapaFisMentTrab}}</td>
+        </tr>
+        <tr style="background-color: #EEE9E9">
+            <td><b>Dependente de Pensão Alimentícia:</b></td>
+            <td>{{dependente.sDependentePensao}}</td>
+            <td><b>Nome do Responsável:</b></td>
+            <td>{{dependente.sResponsavel}}</td>
+            <td><b>Telefone do Responsável:</b></td>
+            <td>{{dependente.sTelefoneResp}}</td>
+        </tr>
+        <tr style="background-color: #CDC9C9">
+            <td colspan="6"></td>
+        </tr>
+    </table>
+  </div>
+
+  <div *ngIf="estagiario.sNaturezaEstagio != null">
+    <div style="margin-top: 35px;padding-left:10px;">
+        <b>Dados complementares do Estagiário(a)</b>
+    </div>
+    <table width="98%" cellpadding="2" cellspacing="2" class="comBordaSimples" style="margin-top: 20px;margin-left:10px;"  id="tblEstagiario" visible="false">
+        <tr style="background-color: #EEE9E9">
+            <td width="10%"><b>Natureza do estágio:</b></td>
+            <td width="12%">
+                {{estagiario.sNaturezaEstagio}}
+            </td>
+            <td width="9%"><b>CNPJ da Instituição:</b></td>
+            <td width="8%">
+                {{estagiario.sCNPJInst}}
+            </td>
+            <td width="12%"><b>Razão Social da instituição:</b></td>
+            <td width="15%">
+                {{estagiario.sRazaoSocialInst}}
+            </td>
+            <td width="9%"><b>Nome do supervisor:</b></td>
+            <td width="17%">
+                {{estagiario.sNomeSupervisor}}
+            </td>
+        </tr>
+        <tr style="background-color: #CDC9C9">
+            <td width="10%"><b>Logradouro da Instituição:</b></td>
+            <td width="15%">
+                {{estagiario.sLogradouroInst}}
+            </td>
+            <td width="9%"><b>Número da Instituição:</b></td>
+            <td width="5%">
+                {{estagiario.sNumInst}}
+            </td>
+            <td width="10%"><b>Bairro da Instituição:</b></td>
+            <td width="15%">
+                {{estagiario.sBairroInst}}
+            </td>
+            <td width="10%"><b>Cidade da Instituição:</b></td>
+            <td width="15%">
+                {{estagiario.sCidadeInst}}
+            </td>
+        </tr>
+        <tr style="background-color: #EEE9E9">
+            <td><b>CEP da instituição:</b></td>
+            <td>
+                {{estagiario.sCepInst}}
+            </td>
+            <td><b>UF da instituição:</b></td>
+            <td>
+                {{estagiario.sUfInst}}
+            </td>
+            <td><b>Área de atuação:</b></td>
+            <td colspan="3">
+                {{estagiario.sAreaAtuacao}}
+            </td>
+        </tr>
+    </table>
+  </div>  
+  <div *ngIf="cedido.sCNPJEmpCed != null">
+    <div style="margin-top: 35px; padding-left:10px;">
+        <b>Dados complementares do Cedido(a)</b>
+    </div>
+    <table width="98%" cellpadding="2" cellspacing="2" class="comBordaSimples" style="margin-top: 20px;margin-left:10px;"  id="tblcedido" visible="false">
+        <tr style="background-color: #CDC9C9">
+            <td width="12%"><b>CNPJ da Empresa Cedente:</b></td>
+            <td width="14%">
+                {{cedido.sCNPJEmpCed}}
+            </td>
+            <td width="8%"><b>Matrícula do Trabalhador:</b></td>
+            <td width="15%">
+                {{cedido.sMatriculaTrab}}
+            </td>
+            <td width="7%"><b>Data de Admissão:</b></td>
+            <td width="17%">
+                {{cedido.dtAdmissao}}
+            </td>
+            <td width="14%"><b>Tipo de Regime Trabalhista:</b></td>
+            <td width="17%">
+                {{cedido.sTipoRegTrab}}
+            </td>
+        </tr>
+        <tr style="background-color: #EEE9E9">
+            <td><b>Tipo de Regime Previdenciário:</b></td>
+            <td>
+                {{cedido.sTipoRegPrev}}
+            </td>
+            <td><b>Onus da Cessão / Requisição:</b></td>
+            <td>
+                {{cedido.sOnusCessReq}}
+            </td>
+            <td>
+                <b>Categoria do Trabalhador:</b>
+            </td>
+            <td colspan="3">
+                {{cedido.sCategoria}}
+            </td>
+        </tr>
+    </table>
+  </div>
+  <div *ngIf="arquivos != ''">
+        <div style="margin-top: 35px; padding-left:10px;">
+            <b>Arquivos anexados</b>
+        </div>
+        <table class="row-border hover" border="1" style="margin-top: 10px;margin-left:10px;width:98%">
+            <thead>
+                <tr style="background-color: #EEE9E9">
+                    <th width="134" style="text-align: center">Tipo</th>
+                    <th width="250" style="text-align: center">Arquivo</th>
+                    <th width="134" style="text-align: center">Operações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let arquivo of arquivos">
+                    <th style="padding-left: 5px;">{{ arquivo.sTipo }}</th>
+                    <th style="padding-left: 5px;">{{ arquivo.sNomeArquivo }}</th>
+                    <th style="text-align: center;">
+                        <a href="javascript: void(0)" (click)="baixar(arquivo)"  
+                        title="Visualizar Documento">
+                            <i class="material-icons">download</i>
+                        </a>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+</div>

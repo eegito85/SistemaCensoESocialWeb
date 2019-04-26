@@ -1,0 +1,211 @@
+  <div class="principal">
+    <div  class="col-md-12" style="text-align: right;padding-right: 50px;" >
+        <button class="btn btn-primary botao" type="submit" (click)="logout()">Sair</button>
+    </div>
+    <div class="loading" *ngIf="loading">
+        <img src="./assets/img/carregando.gif" width="80"/>
+    </div>
+    <form [formGroup]="estagiarioForm" novalidate>
+    <!--{{diagnostic}}-->       
+    <div class="panel" style="margin-top: 20px;">
+        <fieldset class="formulario">
+            <legend>Grupo de Informações Prestadas pelo Estagiário</legend>
+              <div class="row">
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>Natureza do Estágio</label>
+                    <select class="custom-select d-block w-100" id="iNaturezaEstagio" name="iNaturezaEstagio" 
+                    formControlName="iNaturezaEstagio" 
+                    [class.is-valid]="isValid('iNaturezaEstagio')" 
+                    [class.is-invalid]="isInvalid('iNaturezaEstagio')">
+                        <option value="">Selecine</option>
+                        <option value="1">Obrigatório</option>
+                        <option value="2">Não obrigatório</option>
+                    </select>
+                    <div *ngIf="isInvalid('iNaturezaEstagio')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-3 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>Área de Atuação</label>
+                    <select class="custom-select d-block w-100" id="iAreaAtuacao" name="iAreaAtuacao" 
+                    formControlName="iAreaAtuacao" 
+                    [class.is-valid]="isValid('iAreaAtuacao')" 
+                    [class.is-invalid]="isInvalid('iAreaAtuacao')">
+                        <option value="">Selecione</option>
+                        <option value="1">Direito</option>
+                        <option value="2">Administração</option>
+                        <option value="3">Economia</option>
+                        <option value="4">Ciências Contábeis</option>
+                        <option value="5">Comunicação Social</option>
+                        <option value="6">Serviço Social</option>
+                        <option value="7">Psicologia</option>
+                        <option value="8">Engenharia</option>
+                        <option value="9">Arquitetura</option>
+                        <option value="10">Ciências da Computação</option>
+                        <option value="11">Sistemas de Informação</option>
+                        <option value="12">Biblioteconomia</option>
+                        <option value="13">Ciências Atuariais</option>
+                        <option value="14">Estatística e Edificações</option>
+                    </select>
+                    <div *ngIf="isInvalid('iAreaAtuacao')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                        <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                        <label>CNPJ da Inst. Ensino</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="" 
+                      aria-describedby="basic-addon1" name="sCNPJInst" id="sCNPJInst" 
+                      formControlName="sCNPJInst" mask="00.000.000/0000-00" 
+                      [class.is-valid]="isValid('sCNPJInst')" 
+                      [class.is-invalid]="isInvalid('sCNPJInst')">
+                      <div *ngIf="isInvalid('sCNPJInst')" style="color: red">Obr. (Min 14 caracteres)</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-4 ">
+                        <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                        <label>Supervisor Responsável</label>
+                        <input type="text" class="form-control" placeholder="" 
+                        aria-label="" 
+                        aria-describedby="basic-addon1" name="sNomeSupervisor" id="sNomeSupervisor" 
+                        formControlName="sNomeSupervisor" 
+                        [class.is-valid]="isValid('sNomeSupervisor')" 
+                        [class.is-invalid]="isInvalid('sNomeSupervisor')">
+                        <div *ngIf="isInvalid('sNomeSupervisor')" style="color: red">Campo obrigatório</div>
+                    </div>          
+                    <!-- FIM COLUNA-->
+                  </div>
+              <div class="row">
+                <!-- COLUNA-->
+                <div class="col-md-3 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>Razão Social Inst. Ensino</label>
+                    <input type="text" class="form-control" placeholder="" aria-label="" 
+                    aria-describedby="basic-addon1" name="sRazaoSocialInst" id="sRazaoSocialInst" 
+                    formControlName="sRazaoSocialInst" 
+                    [class.is-valid]="isValid('sRazaoSocialInst')" 
+                    [class.is-invalid]="isInvalid('sRazaoSocialInst')">
+                    <div *ngIf="isInvalid('sRazaoSocialInst')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-4 ">
+                        <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                        <label>Logradouro Inst. Ensino</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="" 
+                        aria-describedby="basic-addon1" name="sLogradouroInst" id="sLogradouroInst" 
+                        formControlName="sLogradouroInst" 
+                        [class.is-valid]="isValid('sLogradouroInst')" 
+                        [class.is-invalid]="isInvalid('sLogradouroInst')">
+                        <div *ngIf="isInvalid('sLogradouroInst')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                        <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                        <label>Número</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="" 
+                        aria-describedby="basic-addon1" name="sNumInst" id="sNumInst" 
+                        formControlName="sNumInst" 
+                        [class.is-valid]="isValid('sNumInst')" 
+                        [class.is-invalid]="isInvalid('sNumInst')">
+                        <div *ngIf="isInvalid('sNumInst')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+              </div>
+              <div class="row">
+                <!-- COLUNA-->
+                <div class="col-md-3 ">
+                        <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                        <label>Bairro / Distrito</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="" 
+                        aria-describedby="basic-addon1" name="sBairroInst" id="sBairroInst" 
+                        formControlName="sBairroInst" 
+                        [class.is-valid]="isValid('sBairroInst')" 
+                        [class.is-invalid]="isInvalid('sBairroInst')">
+                        <div *ngIf="isInvalid('sBairroInst')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                        <label>CEP</label>
+                        <input type="text" class="form-control" placeholder="" aria-label="" 
+                        aria-describedby="basic-addon1" name="sCepInst" id="sCepInst" 
+                        formControlName="sCepInst" mask="00.000-000">
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-1 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>UF</label>
+                    <select class="custom-select d-block w-100" id="sUfInst" name="sUfInst" 
+                    formControlName="sUfInst" 
+                    [class.is-valid]="isValid('sUfInst')" 
+                    [class.is-invalid]="isInvalid('sUfInst')" 
+                    (change)="carregarCidades($event)">
+                      <option value="">Selecione</option>
+                      <option value="Ac">AC</option>
+                      <option value="Al">AL</option>
+                      <option value="Ap">AP</option>
+                      <option value="Am">AM</option>
+                      <option value="Ba">BA</option>
+                      <option value="Ce">CE</option>
+                      <option value="Df">DF</option>
+                      <option value="Es">ES</option>
+                      <option value="Go">GO</option>
+                      <option value="Ma">MA</option>
+                      <option value="Mt">MT</option>
+                      <option value="Ms">MS</option>
+                      <option value="Mg">MG</option>
+                      <option value="Pa">PA</option>
+                      <option value="Pb">PB</option>
+                      <option value="Pr">PR</option>
+                      <option value="Pe">PE</option>
+                      <option value="Pi">PI</option>
+                      <option value="Rj">RJ</option>
+                      <option value="Rn">RN</option>
+                      <option value="Rs">RS</option>
+                      <option value="Ro">RO</option>
+                      <option value="Rr">RR</option>
+                      <option value="Sc">SC</option>
+                      <option value="SP">SP</option>
+                      <option value="Se">SE</option>
+                      <option value="To">TO</option>
+                    </select>
+                    <div *ngIf="isInvalid('sUfInst')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-4 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>Cidade</label>
+                    <select class="custom-select d-block w-100" id="iCodCidadeInst" 
+                    name="iCodCidadeInst" 
+                    formControlName="iCodCidadeInst" 
+                    [class.is-valid]="isValid('iCodCidadeInst')" 
+                    [class.is-invalid]="isInvalid('iCodCidadeInst')">
+                    <option value="">Selecione</option>
+                    <option *ngFor="let cidade of cidades" [ngValue]="cidade.iCodigo">{{cidade?.sCidade}}</option>                    
+                    </select>
+                    <div *ngIf="isInvalid('iCodCidadeInst')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+              </div>
+        </fieldset>              
+    </div>
+    <div style="margin-top: 20px;">
+        <hr class="mb-4">
+        <div class="col-md-6 " style="margin-left: 700px;">
+          <button class="btn btn-primary" type="button" (click)="getAnterior()">Anterior</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-primary" type="submit" (click)="onSubmit()" 
+          [disabled]="!estagiarioForm.valid">Salvar</button>
+        </div>
+  </div> 
+    </form>
+  
+  

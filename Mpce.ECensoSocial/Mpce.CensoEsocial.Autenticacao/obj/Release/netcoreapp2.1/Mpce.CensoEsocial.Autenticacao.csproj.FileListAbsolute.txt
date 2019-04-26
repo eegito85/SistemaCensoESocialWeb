@@ -1,0 +1,16 @@
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.deps.json
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.runtimeconfig.json
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.runtimeconfig.dev.json
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.pdb
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.pdb
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\bin\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.pdb
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.csprojAssemblyReference.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.csproj.CoreCompileInputs.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.AssemblyInfoInputs.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.AssemblyInfo.cs
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.csproj.CopyComplete
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Autenticacao\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Autenticacao.pdb

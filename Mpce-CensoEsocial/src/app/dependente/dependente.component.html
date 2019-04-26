@@ -1,0 +1,188 @@
+  <div class="principal">
+    <div  class="col-md-12" style="text-align: right;padding-right: 50px;" >
+        <button class="btn btn-primary" type="submit" (click)="logout()">Sair</button>
+    </div>
+    <div class="loading" *ngIf="loading">
+        <img src="./assets/img/carregando.gif" width="80"/>
+    </div>
+    <div style="margin-left: 40px;">
+      <p style="color: red; margin-top: 5px; font-size: 25px;">
+        <b>Observações importantes:</b>
+      </p>
+      <p style="color: red; margin-top: 5px; font-size: 18px;">
+        (1) Nessa página é obrigatório anexar os documentos requeridos dos dependentes.
+      </p>
+      <p style="color: red; margin-top: 5px; font-size: 18px;">
+        (2) Caso tenha mais de 01 (um) dependente a declarar, favor repetir o processo individualizado antes de concluir.
+      </p>
+      <p style="color: red; margin-top: 5px; font-size: 18px;">
+        (3) O botão "Gravar" somente estará ativo se todos os campos requeridos, bem como anexos obrigatórios estiverem preenchidos.
+      </p>
+      <!--<label style="color: red; margin-top: 5px; font-size: 35px;">
+            <b>Obs: Nessa página é obrigatório anexar os documentos requeridos para os dependentes.</b> 
+      </label>-->
+    </div>
+    <form [formGroup]="dependenteForm" novalidate>
+    <!--{{diagnostic}}-->
+    <div class="panel" style="margin-top: 20px;">
+        <fieldset class="formulario">
+            <legend>Grupo de Informação dos Dependentes do Trabalhador</legend>
+              <div class="row">
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>Tipo de Dependente</label>
+                    <select class="custom-select d-block w-100" id="iTipoDependente" 
+                    name="iTipoDependente" formControlName="iTipoDependente" 
+                    [class.is-valid]="isValid('iTipoDependente')"
+                    [class.is-invalid]="isInvalid('iTipoDependente')">
+                      <option value="">Selecione</option>
+                      <option value="1">Cônjuge</option>
+                      <option value="2">Companheiro(a) com o(a) qual tenha filho ou viva há mais de 5 (cinco) anos ou possua Declaração de União Estável</option>
+                      <option value="3">Filho(a) ou enteado(a)</option>
+                      <option value="4">Filho(a) ou enteado(a), universitário(a) ou cursando escola técnica de 2º grau;</option>
+                      <option value="6">Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, do(a) qual detenha a guarda judicial</option>
+                      <option value="7">Irmão(ã), neto(a) ou bisneto(a) sem arrimo dos pais, universitário(a) ou cursando escola técnica de 2° grau, do(a) qual detenha a guarda judicia</option>
+                      <option value="9">Pais, avós e bisavós</option>
+                      <option value="10">Menor pobre do qual detenha a guarda judicial</option>
+                      <option value="11">A pessoa absolutamente incapaz, da qual seja tutor ou curador</option>
+                      <option value="12">Ex-cônjuge</option>
+                      <option value="99">Agregado/Outros</option>
+                    </select>
+                    <div *ngIf="isInvalid('iTipoDependente')" style="color: red">Campo obrigatório</div>
+                  </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-4 ">
+                  <span style="color: red; margin-top: 5px;">*</span>&nbsp;  
+                  <label>Nome</label>
+                  <input type="text" class="form-control" placeholder="" aria-label="" 
+                  aria-describedby="basic-addon1" name="sNomeDependente" id="sNomeDependente" 
+                  formControlName="sNomeDependente" 
+                  [class.is-valid]="isValid('sNomeDependente')"
+                  [class.is-invalid]="isInvalid('sNomeDependente')">
+                  <div *ngIf="isInvalid('sNomeDependente')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>CPF</label>
+                    <input type="text" class="form-control"
+                    name="sCPFDependente" id="sCPFDependente" 
+                    formControlName="sCPFDependente" mask="000.000.000-00" 
+                    [class.is-valid]="isValid('sCPFDependente')"
+                    [class.is-invalid]="isInvalid('sCPFDependente')" 
+                    (focusout)="callUpload()"> 
+                    <div *ngIf="isInvalid('sCPFDependente')" style="color: red">Obg. Min 11 caracteres</div>
+                    <img src="./assets/img/cliper.png" 
+                    style="margin-top: -60px; margin-left: 180px; cursor: pointer" 
+                    (click)="abrirFormArquivo('CPF do Dependente')" title="Obrigatório Anexar CPF do dependente">
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                    <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                    <label>Data de Nascimento</label>
+                    <input type="date" formControlName="dtNasc" class="form-control"
+                    [class.is-valid]="isValid('dtNasc')"
+                    [class.is-invalid]="isInvalid('dtNasc')" >
+                    <div *ngIf="isInvalid('dtNasc')" style="color: red">Campo obrigatório</div>
+                </div>          
+                <!-- FIM COLUNA-->
+              </div>
+              
+              <div class="row">
+                <!-- COLUNA-->
+                <div class="col-md-3 ">
+                    <label>Dependente do Trabalhador Para Fins de Dedução de IRRF</label>
+                    <select class="custom-select d-block w-100" id="sDepTrabIRRF" 
+                    name="sDepTrabIRRF"  formControlName="sDepTrabIRRF" 
+                    (change)="callUploadIrf()">
+                    <option value="">Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                    </select>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-3 ">
+                    <label>Dependente Tem Incapacidade Física ou Mental Para o Trabalho</label>
+                    <select class="custom-select d-block w-100" id="sDepIncapaFisMentTrab" 
+                    name="sDepIncapaFisMentTrab"  
+                    formControlName="sDepIncapaFisMentTrab" title="Dependente Tem Incapacidade Física ou Mental Para o Trabalho">
+                    <option value="">Selecione</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                    </select>
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-3 ">
+                    <label>Dependente de Pensão Alimentícia<br>&nbsp;</label>
+                    <select class="custom-select d-block w-100" id="iDependentePensao" 
+                    name="iDependentePensao" formControlName="iDependentePensao">
+                      <option value="">Selecione</option>
+                      <option value="1">Sim</option>
+                      <option value="0">Não</option>
+                    </select>
+                </div>          
+                <!-- FIM COLUNA-->
+            </div>
+            <div class="row">
+                <!-- COLUNA-->
+                <div class="col-md-4 ">
+                    <label>Nome do Responsável Pela Pensão Alimentícia</label>
+                    <input type="text" class="form-control" placeholder="" aria-label="" 
+                    aria-describedby="basic-addon1" name="sResponsavel" id="sResponsavel" 
+                    formControlName="sResponsavel">
+                </div>          
+                <!-- FIM COLUNA-->
+                <!-- COLUNA-->
+                <div class="col-md-2 ">
+                    <label>Telefone do Responsável Pela Pensão Alimentícia</label>
+                    <input type="text" class="form-control" placeholder="" aria-label="" 
+                    aria-describedby="basic-addon1" name="sTelefoneResp" id="sTelefoneResp" 
+                    formControlName="sTelefoneResp" mask="(00) 00000-0000">
+                </div>          
+                <!-- FIM COLUNA-->
+            </div>
+        </fieldset>              
+    </div>
+    <div style="margin-top: 20px;">
+        <hr class="mb-4" style="float: left;">
+        <div style="margin-left: 600px;">
+          <button class="btn btn-primary" type="button" (click)="getAnterior()">Anterior</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-primary" type="submit" (click)="onSubmit()" 
+          [disabled]="!dependenteForm.valid">Gravar</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-primary" type="button" (click)="concluir()">Concluir</button>
+        </div>
+  </div> 
+    <div class="divtable" *ngIf="dependentes.length > 0">
+      <table class="row-border hover" border="1" style="width: 900px">
+        <thead>
+            <tr>
+              <th width="450" style="text-align: center">Nome</th>
+              <th width="134" style="text-align: center">Operações</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dependente of dependentes">
+                <th style="padding-left: 5px;">{{ dependente.sNomeDependente }}</th>
+                <th style="text-align: center;">
+                    <a href="javascript: void(0)" (click)="getDependente(dependente.iCodigo)"  title="Visualizar / Editar Depentente">
+                        <i class="material-icons">editar</i>
+                    </a>
+                    &nbsp;|&nbsp;
+                    <a href="javascript:void(0);" (click)="excluirDependente(dependente.iCodigo)" title="Excluir Dependente">
+                        <i class="material-icons">excluir</i>
+                    </a>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    </div>                        
+    </form>
+  </div>

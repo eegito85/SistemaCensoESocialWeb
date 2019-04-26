@@ -1,0 +1,9 @@
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\bin\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.deps.json
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\bin\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\bin\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.pdb
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\obj\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.csprojAssemblyReference.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\obj\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.csproj.CoreCompileInputs.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\obj\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.AssemblyInfoInputs.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\obj\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.AssemblyInfo.cs
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\obj\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.ECensoSocial.Domain.Domain\obj\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.pdb

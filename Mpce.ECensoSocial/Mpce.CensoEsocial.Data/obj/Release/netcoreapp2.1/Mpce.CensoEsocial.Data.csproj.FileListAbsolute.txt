@@ -1,0 +1,12 @@
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.deps.json
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\bin\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.pdb
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\bin\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\bin\Release\netcoreapp2.1\Mpce.ECensoSocial.Domain.Domain.pdb
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.csprojAssemblyReference.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.csproj.CoreCompileInputs.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.AssemblyInfoInputs.cache
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.AssemblyInfo.cs
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.csproj.CopyComplete
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.dll
+C:\Users\etevaldo.jales\source\repos\Mpce.ECensoSocial\Mpce.CensoEsocial.Data\obj\Release\netcoreapp2.1\Mpce.CensoEsocial.Data.pdb

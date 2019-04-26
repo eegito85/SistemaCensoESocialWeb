@@ -1,0 +1,65 @@
+<div class="principal">
+  <form [formGroup]="loginForm" novalidate>
+    <!--{{diagnostic}}-->
+    <div class="panel" style="margin-top: 20px;">
+      <fieldset class="formulario">
+        <legend style="text-align:center">Censo eSocial</legend>
+        <div class="loading" *ngIf="loading">
+          <img src="./assets/img/carregando.gif" width="80" />
+        </div>
+        <div style="height:20px"></div>
+        <div class="row">
+          <div class="col-12" style="text-align: center;">
+            <h5>
+              O CENSO FOI REABERTO EXCLUSIVAMENTE PARA QUEM AINDA NÃO PREENCHEU OS DADOS NA PRIMEIRA EDIÇÃO.<br>
+              CASO JÁ TENHA PREENCHIDO SEUS DADOS, SE AUTENTIQUE PARA VISUALIZÁ-LOS. 
+            </h5>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:60px;">
+          <!--<label>Usuário</label>-->
+          <input type="text" class="form-control" placeholder="CPF" style="width:25%; margin-left:37.5%" name="cpf" id="cpf" formControlName="cpf"
+            mask="000.000.000-00" [class.is-valid]="isValid('cpf')" [class.is-invalid]="isInvalid('cpf')">
+          <div *ngIf="isInvalid('cpf')" style="color: red">{{this.getMensagem('CPF',11)}}</div>
+        </div>
+        <div style="height:20px;text-align:center">
+        </div>
+        <div style="text-align:center">
+          <!--<label>Senha</label>-->
+          <input type="password" class="form-control" placeholder="Senha" aria-label="" style="width:25% ; margin-left:37.5%" aria-describedby="basic-addon1"
+            name="Senha" id="Senha" formControlName="Senha" mask="0000000" [class.is-valid]="isValid('Senha')" [class.is-invalid]="isInvalid('Senha')">
+          <div *ngIf="isInvalid('Senha')" style="color: red">{{this.getMensagem('Senha',7)}}</div>
+        </div>
+      </fieldset>
+      <div style="height:30px; text-align: center; margin-top: 10px;">
+        A Senha é composta por: os três primeiros dígitos do seu CPF + o seu ano de nascimento
+      </div>
+      <hr class="mb-4">
+      <div style="height:5px"></div>
+      <div style="text-align:center">
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()" [disabled]="!loginForm.valid">Entrar</button>
+      </div>
+    </div>
+  </form>
+</div>
+<ng-template #content let-modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Menu - Administração</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Close click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p style="text-align: center">
+      <b>Usuário Administrador clique no botão desejado</b>
+    </p>
+    <div style="text-align: center">
+      <button type="button" class="btn btn-primary" (click)="d('Close click');redirecionarAdm()">Administração</button>
+      &nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" (click)="d('Close click');carregarTrabalhador()">Cadastro</button>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="d('Close click')">Fechar</button>
+  </div>
+</ng-template>

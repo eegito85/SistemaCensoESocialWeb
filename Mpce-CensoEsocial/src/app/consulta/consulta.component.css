@@ -1,0 +1,13 @@
+table.comBordaSimples {
+    /*border-collapse: collapse; /* CSS2 */
+    border-radius: 5px;
+    border: 2px solid #666666;
+}
+
+    /*table.comBordaSimples td {
+    border: 1px solid black;
+}*/
+
+    table.comBordaSimples td {
+        /*border-right :3px solid #b6ff00;*/
+    }

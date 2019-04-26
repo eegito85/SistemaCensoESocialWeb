@@ -1,0 +1,112 @@
+  <div class="principal">
+    <div  class="col-md-12" style="text-align: right;padding-right: 50px;" >
+        <button class="btn btn-primary" type="submit" (click)="logout()">Sair</button>
+    </div>
+    <div class="loading" *ngIf="loading">
+        <img src="./assets/img/carregando.gif" width="80"/>
+    </div>
+    <form [formGroup]="cedidoForm" novalidate>
+    <!--{{diagnostic}}-->       
+    <div class="panel" style="margin-top: 20px;">
+      <fieldset class="formulario">
+          <legend>Grupo De Informações Prestadas Pelo Trabalhador Cedido</legend>
+            <div class="row" style="text-align: center">
+                <h4>As informações aqui prestadas referem-se ao órgão de origem do trabalhador cedido.</h4>
+            </div>
+            <div class="row">
+              <!-- COLUNA-->
+              <div class="col-md-3">
+                  <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                  <label>CNPJ da Empresa Cedente</label>
+                  <input type="text" class="form-control" 
+                  name="sCNPJEmpCed" id="sCNPJEmpCed" 
+                  formControlName="sCNPJEmpCed" mask="00.000.000/0000-00" 
+                  [class.is-valid]="isValid('sCNPJEmpCed')" [class.is-invalid]="isInvalid('sCNPJEmpCed')">
+                  <img src="./assets/img/cliper.png" 
+                  style="cursor: pointer;width:24px" 
+                  (click)="abrirFormArquivo('CNPJ da Empresa Cedente')">
+                  <div *ngIf="isInvalid('sCNPJEmpCed')" style="color: red">Obrg. (Min. 14 caracteres)</div>
+              </div>          
+              <!-- FIM COLUNA-->
+              <!-- COLUNA-->
+              <div class="col-md-3">
+                  <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+                  <label>Matrícula do Trabalhador</label>
+                  <input type="text" class="form-control" 
+                  name="sMatriculaTrab" id="sMatriculaTrab" 
+                  formControlName="sMatriculaTrab" 
+                  [class.is-valid]="isValid('sMatriculaTrab')" [class.is-invalid]="isInvalid('sMatriculaTrab')">
+                  <div *ngIf="isInvalid('sMatriculaTrab')" style="color: red">Campo obrigatório</div>
+              </div>          
+              <!-- FIM COLUNA-->
+              <!-- COLUNA-->
+              <div class="col-md-2">
+                  <label>Data de Admissão</label>
+                  <input type="date" formControlName="dtAdmissao" class="form-control">
+              </div>          
+              <!-- FIM COLUNA-->
+              <!-- COLUNA-->
+              <div class="col-md-3">
+                  <label>Tipo de Regime Trabalhista</label>
+                  <select class="custom-select d-block w-100" id="iTipoRegTrab" name="iTipoRegTrab" 
+               formControlName="iTipoRegTrab">
+                  <option value="">Selecione</option>
+                  <option value="1">CLT(celetista)</option>
+                  <option value="2">Estatutário</option>
+              </select>
+              </div>          
+              <!-- FIM COLUNA-->
+            </div>
+            <div class="row">
+              <!-- COLUNA-->
+              <div class="col-md-3">
+                <label>Tipo de Regime Previdenciário</label>
+                <select class="custom-select d-block w-100" id="iTipoRegPrev" name="iTipoRegPrev" 
+                 formControlName="iTipoRegPrev">
+                    <option value="">Selecione</option>
+                    <option value="1">RGPS</option>
+                    <option value="2">RPPS</option>
+                    <option value="3">Regime de Previdência Social no Exterior</option>
+                </select>
+            </div>          
+            <!-- FIM COLUNA-->
+            <!-- COLUNA-->
+              <div class="col-md-3">
+                  <label>Onus da Cessão / Requisição</label>
+                  <select class="custom-select d-block w-100" id="iOnusCessReq" name="iOnusCessReq" 
+                   formControlName="iOnusCessReq">
+                      <option value="">Selecione</option>
+                      <option value="1">Cedente</option>
+                      <option value="2">Cessionário</option>
+                      <option value="3">Cedente e Cessionário</option>
+                  </select>
+              </div>          
+              <!-- FIM COLUNA-->
+              <!-- COLUNA-->
+              <div class="col-md-3">
+                <label>Categoria do Trabalhador</label>
+                <select class="custom-select d-block w-100" id="iCategoria" name="iCategoria" 
+                 formControlName="iCategoria">
+                    <option value="">Selecione</option>
+                    <option value="101">Empregado Geral inclusive emprego público p/CLT</option>
+                    <option value="301">Servidor Público Titular de Cargo Efetivo</option>
+                    <option value="302">Servidor Ocupante de cargo exclusivo em comissão</option>
+                    <option value="306">Servidor Público Temporário, sujeito a regime adm. especial</option>
+                </select>
+            </div>          
+            <!-- FIM COLUNA-->
+        </div>
+      </fieldset>              
+    </div>
+    <div style="margin-top: 20px;">
+        <hr class="mb-4" style="float: left;">
+        <div style="margin-left: 600px;">
+          <button class="btn btn-primary" type="button" (click)="getAnterior()">Anterior</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-primary" type="submit" (click)="onSubmit()" 
+          [disabled]="!cedidoForm.valid">Salvar</button>
+        </div>
+  </div> 
+    </form>
+  
+  

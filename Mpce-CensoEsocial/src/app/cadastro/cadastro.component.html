@@ -1,0 +1,757 @@
+<script language="javascript">
+  $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({ allow_single_deselect: true });
+</script>
+<div class="principal">
+  <div class="col-md-12" style="text-align: right;padding-right: 50px;">
+    <button class="btn btn-primary" type="submit" (click)="logout()">Sair</button>
+  </div>
+  <div class="loading" *ngIf="loading">
+    <img src="./assets/img/carregando.gif" width="80"/>
+  </div>
+  <div *ngIf="this.iCodigo > 0" style="font-size: 20px;">
+      <b>Clique <a href="javascript: void(0)" (click)="confirmarDados()" target="_blank">aqui</a> para visualizar seus dados cadastrados</b>
+  </div>
+  <div>
+    <label style="color: red; margin-top: 5px; font-size: 25px;">
+      <b>Obs: Nessa página é opcional anexar os documentos.</b>
+    </label>
+  </div>
+  <form [formGroup]="cadastroForm" novalidate>
+    <!--{{diagnostic}}-->
+    <div class="panel">
+      <fieldset class="formulario">
+        <legend>Grupo de Informações Pessoais do Trabalhador</legend>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Tipo de Trabalhador</label>
+            <br>{{vrVinculo}}
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Nome</label>
+            <input type="text" class="form-control input-Form" formControlName="sNome" name="sNome" [class.is-valid]="isValid('sNome')"
+              [class.is-invalid]="isInvalid('sNome')">
+            <div *ngIf="isInvalid('sNome')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Sexo</label>
+            <select class="custom-select input-Form" id="iSexo" name="iSexo"  formControlName="iSexo" [class.is-valid]="isValid('iSexo')"
+              [class.is-invalid]="isInvalid('iSexo')">
+              <option value="">Selecione</option>
+              <option value="1">Masculino</option>
+              <option value="2">Feminimo</option>
+            </select>
+            <div *ngIf="isInvalid('iSexo')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Estado Civil</label>
+            <select class="custom-select input-Form chzn-select-deselect" id="iEstadoCivil" name="iEstadoCivil"  formControlName="iEstadoCivil"
+              [class.is-valid]="isValid('iEstadoCivil')" [class.is-invalid]="isInvalid('iEstadoCivil')">
+              <option value="">Selecione</option>
+              <option value="1">Solteiro(a)</option>
+              <option value="2">Casado(a)</option>
+              <option value="3">Divorciado(a)</option>
+              <option value="4">Separado(a)</option>
+              <option value="5">Viúvo(a)</option>
+              <option value="6">União Estável</option>
+            </select>
+            <img src="./assets/img/cliper.png" style="cursor: pointer;width: 24px; " (click)="abrirFormArquivo('Certidão de Casamento / Comprovação de Divórcio')">
+            <div *ngIf="isInvalid('iEstadoCivil')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+
+        </div>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Raça / Cor</label>
+            <select class="custom-select input-Form" id="iRacaCor" name="iRacaCor" formControlName="iRacaCor"  [class.is-valid]="isValid('iRacaCor')"
+              [class.is-invalid]="isInvalid('iRacaCor')">
+              <option value="">Selecione</option>
+              <option value="1">Branca</option>
+              <option value="2">Preta</option>
+              <option value="3">Parda</option>
+              <option value="4">Amarela</option>
+              <option value="5">Indígena</option>
+              <option value="6">Não informado</option>
+            </select>
+            <div *ngIf="isInvalid('iRacaCor')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>CPF</label>
+            <input type="text" class="form-control input-Form" placeholder="" aria-label="" name="sCPF" id="sCPF" formControlName="sCPF"
+              mask="000.000.000-00" [class.is-valid]="isValid('sCPF')" [class.is-invalid]="isInvalid('sCPF')">
+            <img src="./assets/img/cliper.png" style="width: 24px; cursor: pointer;" (click)="abrirFormArquivo('CPF')">
+            <div *ngIf="isInvalid('sCPF')" style="color: red">Obrigatório (Min 11 caracteres)</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>NIS/PIS/PASEP</label>
+            <input type="text" class=" form-control " placeholder="" aria-label="" aria-describedby="basic-addon1" name="sNisPisPasep"
+              id="sNisPisPasep" formControlName="sNisPisPasep" mask="000.00000.00-0"  [class.is-valid]="isValid('sNisPisPasep')"
+              [class.is-invalid]="isInvalid('sNisPisPasep')">
+            <img src="./assets/img/cliper.png" style="width: 24px; cursor: pointer" (click)="abrirFormArquivo('NIS/PIS/PASEP')">
+            <div *ngIf="isInvalid('sNisPisPasep')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Grau de Instrução</label>
+            <select class="custom-select input-Form" id="iGrauInstrucao" name="iGrauInstrucao"  formControlName="iGrauInstrucao"
+              [class.is-valid]="isValid('iGrauInstrucao')" [class.is-invalid]="isInvalid('iGrauInstrucao')">
+              <option value="">Selecione</option>
+              <option value="1">Analfabeto, inclusive o que, embora tenha recebido instrução, não se alfabetizou</option>
+              <option value="2">Até o 5º ano incompleto do Ensino Fundamental (antiga 4ª série) ou que se tenha alfabetizado sem ter frequentado
+                escola regular</option>
+              <option value="3">5º ano completo do Ensino Fundamenta</option>
+              <option value="4">Do 6º ao 9º ano do Ensino Fundamental incompleto (antiga 5ª a 8ª série)</option>
+              <option value="5">Ensino Fundamental Completo</option>
+              <option value="6">Ensino Médio incompleto</option>
+              <option value="7">Ensino Médio completo</option>
+              <option value="8">Educação Superior incompleta</option>
+              <option value="9">Educação Superior completa</option>
+              <option value="10">Pós-Graduação completa</option>
+              <option value="11">Mestrado completo</option>
+              <option value="12">Doutorado completo</option>
+            </select>
+            <img src="./assets/img/cliper.png" style="cursor: pointer;width:24px" (click)="abrirFormArquivo('Certificado/Declaração Escolar')">
+            <div *ngIf="isInvalid('iGrauInstrucao')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+
+        </div>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3 ">
+            <label>Primeiro Emprego</label>
+            <select class="custom-select d-block w-100" id="iPrimeiroEmprego" name="iPrimeiroEmprego" formControlName="iPrimeiroEmprego">
+              <option value="1">Sim</option>
+              <option value="2">Não</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-5 ">
+            <label>Nome Social Para Travesti Ou Transexual</label>
+            <input type="text" class="form-control" formControlName="sCodiNomeTravTrans" name="sCodiNomeTravTrans" id="sCodiNomeTravTrans">
+            <div class="invalid-feedback">
+              Por favor preencha o campo Nome.
+            </div>
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+      </fieldset>
+    </div>
+    <div class="panel">
+      <fieldset class="formulario">
+        <legend>Grupo de Informações do Nascimento do Trabalhador</legend>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Data de Nascimento</label>
+            <input type="date" class="form-control" formControlName="dtDataNasc" [class.is-valid]="isValid('dtDataNasc')" [class.is-invalid]="isInvalid('dtDataNasc')">
+            <div *ngIf="isInvalid('iGrauInstrucao')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-2 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>UF</label>
+            <select class="custom-select d-block w-100" id="sUfNasc" name="sUfNasc" formControlName="sUfNasc" 
+             [class.is-valid]="isValid('sUfNasc')" [class.is-invalid]="isInvalid('sUfNasc')" 
+            (change)="carregarCidades($event)">
+              <option value="">Selecione</option>
+              <option value="Ac">AC</option>
+              <option value="Al">AL</option>
+              <option value="Ap">AP</option>
+              <option value="Am">AM</option>
+              <option value="Ba">BA</option>
+              <option value="Ce">CE</option>
+              <option value="Df">DF</option>
+              <option value="Es">ES</option>
+              <option value="Go">GO</option>
+              <option value="Ma">MA</option>
+              <option value="Mt">MT</option>
+              <option value="Ms">MS</option>
+              <option value="Mg">MG</option>
+              <option value="Pa">PA</option>
+              <option value="Pb">PB</option>
+              <option value="Pr">PR</option>
+              <option value="Pe">PE</option>
+              <option value="Pi">PI</option>
+              <option value="Rj">RJ</option>
+              <option value="Rn">RN</option>
+              <option value="Rs">RS</option>
+              <option value="Ro">RO</option>
+              <option value="Rr">RR</option>
+              <option value="Sc">SC</option>
+              <option value="SP">SP</option>
+              <option value="Se">SE</option>
+              <option value="To">TO</option>
+            </select>
+            <div *ngIf="isInvalid('sUfNasc')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Naturalidade</label>
+            <select class="custom-select w-100" id="iCodMunicipioNasc" name="iCodMunicipioNasc"  formControlName="iCodMunicipioNasc"
+              [class.is-valid]="isValid('iCodMunicipioNasc')" [class.is-invalid]="isInvalid('iCodMunicipioNasc')">
+              <option value="" selected>Selecione</option>
+              <option *ngFor="let cidade of cidades" [value]="cidade.iCodigo">{{cidade?.sCidade}}</option>
+            </select>
+            <div *ngIf="isInvalid('iCodMunicipioNasc')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>País de Nascimento</label>
+            <select class="custom-select d-block w-100" id="iPaisNasc" name="iPaisNasc"  formControlName="iPaisNasc" [class.is-valid]="isValid('iPaisNasc')"
+              [class.is-invalid]="isInvalid('iPaisNasc')">
+              <option value="">Selecione</option>
+              <option *ngFor="let pais of paises" [ngValue]="pais.iCodigo">{{pais?.sPais}}</option>
+            </select>
+            <div *ngIf="isInvalid('iPaisNasc')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Nacionalidade</label>
+            <select class="custom-select d-block w-100" id="iNacionalidade" name="iNacionalidade"  formControlName="iNacionalidade"
+              [class.is-valid]="isValid('iNacionalidade')" [class.is-invalid]="isInvalid('iNacionalidade')">
+              <option value="">Selecione</option>
+              <option *ngFor="let pais of paises" [ngValue]="pais.iCodigo">{{pais?.sPais}}</option>
+            </select>
+            <div *ngIf="isInvalid('iNacionalidade')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-4 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Mãe</label>
+            <input type="text" class="form-control" placeholder=""  aria-describedby="basic-addon1" name="sNomeMae" id="sNomeMae"
+              formControlName="sNomeMae" [class.is-valid]="isValid('sNomeMae')" [class.is-invalid]="isInvalid('sNomeMae')">
+            <div *ngIf="isInvalid('sNomeMae')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-4 ">
+            <label>Pai</label>
+            <br>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sNomePai" id="sNomePai"
+              formControlName="sNomePai">
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+      </fieldset>
+    </div>
+    <div class="panel" style="margin-top: 20px;">
+      <fieldset class="formulario">
+        <legend>Grupo dos Documentos Pessoais do Trabalhador</legend>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>Nº CTPS</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sNumCTPS" id="sNumCTPS"
+              formControlName="sNumCTPS">
+            <img src="./assets/img/cliper.png" style="cursor: pointer;width:24px" (click)="abrirFormArquivo('CTPS')">
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>Nº SÉRIE CTPS</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sNumSerieCTPS"
+              id="sNumSerieCTPS" formControlName="sNumSerieCTPS">
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>UF CTPS</label>
+              <select class="custom-select d-block w-100" id="sUfCTPS" name="sUfCTPS" formControlName="sUfCTPS">
+               <option value="">Selecione</option>
+               <option value="Ac">AC</option>
+               <option value="Al">AL</option>
+               <option value="Ap">AP</option>
+               <option value="Am">AM</option>
+               <option value="Ba">BA</option>
+               <option value="Ce">CE</option>
+               <option value="Df">DF</option>
+               <option value="Es">ES</option>
+               <option value="Go">GO</option>
+               <option value="Ma">MA</option>
+               <option value="Mt">MT</option>
+               <option value="Ms">MS</option>
+               <option value="Mg">MG</option>
+               <option value="Pa">PA</option>
+               <option value="Pb">PB</option>
+               <option value="Pr">PR</option>
+               <option value="Pe">PE</option>
+               <option value="Pi">PI</option>
+               <option value="Rj">RJ</option>
+               <option value="Rn">RN</option>
+               <option value="Rs">RS</option>
+               <option value="Ro">RO</option>
+               <option value="Rr">RR</option>
+               <option value="Sc">SC</option>
+               <option value="SP">SP</option>
+               <option value="Se">SE</option>
+               <option value="To">TO</option>
+             </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>RG</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sNumRG" id="sNumRG"
+              formControlName="sNumRG"  [class.is-valid]="isValid('sNumRG')" [class.is-invalid]="isInvalid('sNumRG')">
+            <img src="./assets/img/cliper.png" style="cursor: pointer;width:24px" (click)="abrirFormArquivo('RG')">
+            <div *ngIf="isInvalid('sNumRG')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Org. Emissor RG - UF</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sEmissaoRG" id="sEmissaoRG"
+              formControlName="sEmissaoRG"  [class.is-valid]="isValid('sEmissaoRG')" [class.is-invalid]="isInvalid('sEmissaoRG')">
+            <div *ngIf="isInvalid('sEmissaoRG')" style="color: red">Campo obrigatório</div>
+          </div>
+          <div class="col-md-3 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Data de Expedição RG</label>
+            <input type="date" formControlName="dtExpedRG" class="form-control"  [class.is-valid]="isValid('dtExpedRG')" [class.is-invalid]="isInvalid('dtExpedRG')">
+            <div *ngIf="isInvalid('dtExpedRG')" style="color: red">Campo obrigatório</div>
+          </div>
+          <div class="col-md-3 ">
+            <label>Nº CNH</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sNumCNH" id="sNumCNH"
+              formControlName="sNumCNH" mask="00000000000">
+            <img src="./assets/img/cliper.png" style="cursor: pointer;width:24px" (click)="abrirFormArquivo('CNH')">
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>Data de Expedição CNH</label>
+            <input type="date" formControlName="dtExpedCNH" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>UF CNH</label>
+              <select class="custom-select d-block w-100" id="sUfCNH" name="sUfCNH" formControlName="sUfCNH">
+                <option value="">Selecione</option>
+                <option value="Ac">AC</option>
+                <option value="Al">AL</option>
+                <option value="Ap">AP</option>
+                <option value="Am">AM</option>
+                <option value="Ba">BA</option>
+                <option value="Ce">CE</option>
+                <option value="Df">DF</option>
+                <option value="Es">ES</option>
+                <option value="Go">GO</option>
+                <option value="Ma">MA</option>
+                <option value="Mt">MT</option>
+                <option value="Ms">MS</option>
+                <option value="Mg">MG</option>
+                <option value="Pa">PA</option>
+                <option value="Pb">PB</option>
+                <option value="Pr">PR</option>
+                <option value="Pe">PE</option>
+                <option value="Pi">PI</option>
+                <option value="Rj">RJ</option>
+                <option value="Rn">RN</option>
+                <option value="Rs">RS</option>
+                <option value="Ro">RO</option>
+                <option value="Rr">RR</option>
+                <option value="Sc">SC</option>
+                <option value="SP">SP</option>
+                <option value="Se">SE</option>
+                <option value="To">TO</option>
+              </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>Data de Validade CNH</label>
+            <input type="date" formControlName="dtValidadeCNH">
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>Categoria CNH</label>
+            <select class="custom-select d-block w-100" id="iCatCNH" name="iCatCNH"  formControlName="iCatCNH">
+              <option value="">Selecione</option>
+              <option value="1">A</option>
+              <option value="2">B</option>
+              <option value="3">C</option>
+              <option value="4">D</option>
+              <option value="5">E</option>
+              <option value="6">AB</option>
+              <option value="7">AC</option>
+              <option value="8">AD</option>
+              <option value="9">AE</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>Data da 1ª CNH</label>
+            <input type="date" formControlName="dtPrimeiraHab" class="form-control">
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+        <div class="row" *ngIf="trabalhador.iTipo == 1 || trabalhador.iTipo == 3 || trabalhador.iTipo == 5">
+          <div class="col-md-3">
+            <label>Data Expedição (Orgão de Classe)</label>
+            <input type="date" formControlName="dtExpedOC" class="form-control">
+          </div>
+          <div class="col-md-3 ">
+            <label>Data de validade (Orgão de Classe)</label>
+            <input type="date" formControlName="dtValidadeOC" class="form-control">
+          </div>
+          <div class="col-md-3 ">
+            <label>Nº de Reg. Órgão de Classe</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sNumRegOC" id="sNumRegOC"
+              formControlName="sNumRegOC">
+          </div>
+          <div class="col-md-3 ">
+            <label>Org. Emissor - UF (Orgão de Classe)</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sEmissaoOC" id="sEmissaoOC"
+              formControlName="sEmissaoOC">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="panel" style="margin-top: 20px;">
+      <fieldset class="formulario">
+        <legend>Grupo de Informações do Endereço do Trabalhador Residente no Brasil</legend>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Tipo de Logradouro</label>
+            <select class="custom-select d-block w-100" id="sTipoLogradouro" name="sTipoLogradouro"  formControlName="sTipoLogradouro"
+               [class.is-valid]="isValid('sTipoLogradouro')" [class.is-invalid]="isInvalid('sTipoLogradouro')">
+              <option value="">Selecione</option>
+              <option *ngFor="let tipo of tiposLogradouros" [value]="tipo.sCodigo" data-ng-model="selectedOption">{{tipo?.sDescricao}}</option>
+            </select>
+            <div *ngIf="isInvalid('sTipoLogradouro')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-4 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Logradouro</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sLogradouro" id="sLogradouro"
+              formControlName="sLogradouro"  [class.is-valid]="isValid('sLogradouro')" [class.is-invalid]="isInvalid('sLogradouro')">
+            <img src="./assets/img/cliper.png" style="cursor: pointer;width:24px" (click)="abrirFormArquivo('Comprovante de Residência')">
+            <div *ngIf="isInvalid('sLogradouro')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-2">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Número</label>
+            <input type="text" class="form-control" placeholder=""  name="sNumero" id="sNumero" formControlName="sNumero"
+              [class.is-valid]="isValid('sNumero')" [class.is-invalid]="isInvalid('sNumero')">
+            <div *ngIf="isInvalid('sNumero')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3">
+            <label>Complemento</label>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="sComplemento"
+              id="sComplemento" formControlName="sComplemento">
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-4">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Bairro / Distrito</label>
+            <input type="text" class="form-control" placeholder=""  name="sBairro" id="sBairro" formControlName="sBairro"
+              [class.is-valid]="isValid('sBairro')" [class.is-invalid]="isInvalid('sBairro')">
+            <div *ngIf="isInvalid('sBairro')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-2">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>CEP</label>
+            <input type="text" class="form-control" placeholder="" name="sCEP" 
+            id="sCEP" formControlName="sCEP" mask="00.000-000" 
+            [class.is-valid]="isValid('sCEP')" [class.is-invalid]="isInvalid('sCEP')">
+            <div *ngIf="isInvalid('sCEP')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-1">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>UF</label>
+            <select class="custom-select d-block w-100" id="sUfRes" name="sUfRes" formControlName="sUfRes" 
+             [class.is-valid]="isValid('sUfRes')" [class.is-invalid]="isInvalid('sUfRes')" 
+            (change)="carregarMunicipios($event)">
+              <option value="">Selecione</option>
+              <option value="Ac">AC</option>
+              <option value="Al">AL</option>
+              <option value="Ap">AP</option>
+              <option value="Am">AM</option>
+              <option value="Ba">BA</option>
+              <option value="Ce">CE</option>
+              <option value="Df">DF</option>
+              <option value="Es">ES</option>
+              <option value="Go">GO</option>
+              <option value="Ma">MA</option>
+              <option value="Mt">MT</option>
+              <option value="Ms">MS</option>
+              <option value="Mg">MG</option>
+              <option value="Pa">PA</option>
+              <option value="Pb">PB</option>
+              <option value="Pr">PR</option>
+              <option value="Pe">PE</option>
+              <option value="Pi">PI</option>
+              <option value="Rj">RJ</option>
+              <option value="Rn">RN</option>
+              <option value="Rs">RS</option>
+              <option value="Ro">RO</option>
+              <option value="Rr">RR</option>
+              <option value="Sc">SC</option>
+              <option value="SP">SP</option>
+              <option value="Se">SE</option>
+              <option value="To">TO</option>
+            </select>
+            <div *ngIf="isInvalid('sUfRes')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-4">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Cidade</label>
+            <select class="custom-select d-block w-100" id="iCodMunicipioRes" name="iCodMunicipioRes"  formControlName="iCodMunicipioRes"
+              [class.is-valid]="isValid('iCodMunicipioRes')" [class.is-invalid]="isInvalid('iCodMunicipioRes')">
+              <option value="">Selecione</option>
+              <option *ngFor="let municipio of municipios" [ngValue]="municipio.iCodigo">{{municipio?.sCidade}}</option>
+            </select>
+            <div *ngIf="isInvalid('iCodMunicipioRes')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+      </fieldset>
+    </div>
+    <div class="panel" style="margin-top: 20px;">
+      <fieldset class="formulario">
+        <legend>Grupo de Informações de Pessoa com Deficiência</legend>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-2 ">
+            <label>Deficiência Física</label>
+            <select class="custom-select d-block w-100" id="sDefFisica" name="sDefFisica"  formControlName="sDefFisica">
+              <option value="">Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-2 ">
+            <label>Deficiência Visual</label>
+            <select class="custom-select d-block w-100" id="sDefVisual" name="sDefVisual"  formControlName="sDefVisual">
+              <option value="">Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-3 ">
+            <label>Deficiência Auditiva</label>
+            <select class="custom-select d-block w-100" id="sDefAuditiva" name="sDefAuditiva"  formControlName="sDefAuditiva">
+              <option value="">Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-2 ">
+            <label>Deficiência Mental</label>
+            <select class="custom-select d-block w-100" id="sDefMental" name="sDefMental"  formControlName="sDefMental">
+              <option value="">Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-2 ">
+            <label>Deficiência Intelectual</label>
+            <select class="custom-select d-block w-100" id="sDefIntelectual" name="sDefIntelectual"  formControlName="sDefIntelectual">
+              <option value="">Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+      </fieldset>
+    </div>
+    <div class="panel" style="margin-top: 20px;">
+      <fieldset class="formulario">
+        <legend>Grupo de Informação de Aposentadoria do Trabalhador</legend>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-3 ">
+            <label>Recebe Benefício Previdenciário da Aposentadoria por Tempo de Contribuição ou por Idade</label>
+            <select class="custom-select d-block w-100" id="sRecebeBeneficioPrev" name="sRecebeBeneficioPrev"  formControlName="sRecebeBeneficioPrev">
+              <option value="">Selecione</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+      </fieldset>
+    </div>
+    <div class="panel" style="margin-top: 20px;">
+      <fieldset class="formulario">
+        <legend>Grupo de Informação de Contato do Trabalhador</legend>
+        <div class="row">
+          <!-- COLUNA-->
+          <div class="col-md-2">
+            <label>Telefone</label>
+            <input type="text" class="form-control"  name="sTelefone1" id="sTelefone1" formControlName="sTelefone1" mask="(00) 0000-0000">
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-2 ">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Celular</label>
+            <input type="text" class="form-control" name="sTelefone2" id="sTelefone2" 
+            formControlName="sTelefone2" mask="(00) 00000-0000" 
+            [class.is-invalid]="isInvalid('sTelefone2')">
+            <div *ngIf="isInvalid('sTelefone2')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-4">
+            <span style="color: red; margin-top: 5px;">*</span>&nbsp;
+            <label>Email</label>
+            <input type="text" class="form-control" placeholder=""  name="sEmail" id="sEmail" formControlName="sEmail" [class.is-valid]="isValid('sEmail')"
+              [class.is-invalid]="isInvalid('sEmail')">
+              <div *ngIf="isInvalid('sEmail')" style="color: red">Campo obrigatório</div>
+          </div>
+          <!-- FIM COLUNA-->
+          <!-- COLUNA-->
+          <div class="col-md-4">
+            <label>Email 2</label>
+            <input type="text" class="form-control" name="sEmail2" id="sEmail2" formControlName="sEmail2">
+          </div>
+          <!-- FIM COLUNA-->
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <input type="checkbox" name="chkAceite" formControlName="chkAceite"  [checked]="isAceite" [class.is-valid]="isValid('chkAceite')"
+              [class.is-invalid]="isInvalid('chkAceite')">
+            <div *ngIf="isInvalid('chkAceite')" style="color: red">Campo obrigatório</div>
+            <div style="text-align: justify">
+              Declaro para fins de direito, sob as penas da lei, que as informações prestadas e documentos que apresento para atualização
+              de cadastro junto ao Ministério Público do Estado do Ceará são verdadeiros. Estou ciente que devo proceder
+              com a devida atualização, sempre que necessário, de quaisquer alterações das informações originárias aqui prestadas.
+              Declaro ainda que, a falsidade dessa declaração ou dos dados informados no referido formulário configura crime
+              previsto no Código Penal Brasileiro, passível de apuração na forma da lei. Nada mais a declarar, e sabendo
+              da responsabilidade pelas declarações prestadas, firmo a presente.
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div style="margin-top: 20px;">
+      <hr class="mb-4">
+      <div class="col-md-12">
+        <div *ngIf="this.iCodigo > 0" style="font-size: 20px;float:left;margin-left: 50px;">
+            <b>Clique <a href="javascript: void(0)" (click)="confirmarDados()" target="_blank">aqui</a> para visualizar seus dados cadastrados</b>
+        </div>
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()" 
+        [disabled]="!cadastroForm.valid" style="margin-left: 30px;">Enviar Dados</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary" *ngIf="this.stDependente == true" type="button"
+          (click)="setProximo()">Próximo</button>
+        </div>
+    </div>
+    <br>
+    <!--{{cadastroForm.valid}}-->
+  </form>
+  <ng-template #content let-modal let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Dados enviados</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p style="text-align: center"><b>Usuário(a) possui dependente(s)?</b></p>
+      <div  style="text-align: center">
+          <button type="button" class="btn btn-primary" (click)="d('Cross click');redirecionar();">Sim</button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" (click)="d('Cross click');enviarEmail();logout();">Não</button>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <!-- <button type="button" class="btn btn-light" (click)="d('Cross click')">Close</button> -->
+    </div>
+  </ng-template>
+  <ng-template #content2 let-modal let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Dados enviados com sucesso !</h4>
+        <button type="button" class="close" aria-label="Prosseguir" 
+        (click)="d('Cross click');redirecionarEstagiario();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" 
+        (click)="d('Cross click');redirecionarEstagiario();">Prosseguir</button>
+      </div>
+    </ng-template>
+    <ng-template #content3 let-modal let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Dados enviados com sucesso !</h4>
+          <button type="button" class="close" aria-label="Close" 
+          (click)="d('Cross click');redirecionarCedido();">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" 
+          (click)="d('Cross click');redirecionarCedido();">Prosseguir</button>
+        </div>
+      </ng-template>
+    

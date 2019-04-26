@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MpceCensoEsocial</title>
+  <meta http-equiv="cache-control" content="no-cache" />
+  <!--HOMOLOGAÇÃO-->
+  <base href="/">
+  <!--DESENVOLVIMENTO E PRODUÇÃO-->
+  <!--<base href="/censoesocial/">-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script>
+
+
+// Firefox 1.0+
+var isFirefox = typeof InstallTrigger !== 'undefined';
+
+// Internet Explorer 6-11
+var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+// Edge 20+
+var isEdge = !isIE && !!window.StyleMedia;
+
+// Chrome 1 - 71
+var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+
+// Blink engine detection
+//var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+if(isFirefox || isIE || isEdge) {
+  alert('Acesse o sistema pelo navegador "Chrome"');
+  location.href = 'http://www.mpce.mp.br/';
+}
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

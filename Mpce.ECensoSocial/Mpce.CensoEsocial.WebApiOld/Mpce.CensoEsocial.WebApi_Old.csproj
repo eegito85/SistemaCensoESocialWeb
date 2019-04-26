@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mpce.CensoEsocial.Autenticacao\Mpce.CensoEsocial.Autenticacao.csproj" />
+    <ProjectReference Include="..\Mpce.CensoEsocial.Data\Mpce.CensoEsocial.Data.csproj" />
+    <ProjectReference Include="..\Mpce.CensoEsocial.EoC\Mpce.CensoEsocial.EoC.csproj" />
+    <ProjectReference Include="..\Mpce.ECensoSocial.Domain.Domain\Mpce.ECensoSocial.Domain.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

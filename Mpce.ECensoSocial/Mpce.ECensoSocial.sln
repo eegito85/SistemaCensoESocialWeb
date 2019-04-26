@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mpce.ECensoSocial.Domain.Domain", "Mpce.ECensoSocial.Domain.Domain\Mpce.ECensoSocial.Domain.Domain.csproj", "{54C61B74-0FEC-4116-A98F-96D3EE43DB31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mpce.CensoEsocial.Data", "Mpce.CensoEsocial.Data\Mpce.CensoEsocial.Data.csproj", "{F4C943BA-0263-46B4-B699-EE4CD02B29D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mpce.CensoEsocial.EoC", "Mpce.CensoEsocial.EoC\Mpce.CensoEsocial.EoC.csproj", "{E6A233BE-24F4-43E7-9AD6-EF9C4030D38F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mpce.CensoEsocial.Autenticacao", "Mpce.CensoEsocial.Autenticacao\Mpce.CensoEsocial.Autenticacao.csproj", "{D24FD85E-30DB-4B72-9346-6593C30A1DA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mpce.CensoEsocial.WebApi", "Mpce.CensoEsocial.WebApi\Mpce.CensoEsocial.WebApi.csproj", "{08581B79-D42A-4DA9-9BCC-CB8CE1EA7844}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54C61B74-0FEC-4116-A98F-96D3EE43DB31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54C61B74-0FEC-4116-A98F-96D3EE43DB31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54C61B74-0FEC-4116-A98F-96D3EE43DB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54C61B74-0FEC-4116-A98F-96D3EE43DB31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C943BA-0263-46B4-B699-EE4CD02B29D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C943BA-0263-46B4-B699-EE4CD02B29D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C943BA-0263-46B4-B699-EE4CD02B29D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C943BA-0263-46B4-B699-EE4CD02B29D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6A233BE-24F4-43E7-9AD6-EF9C4030D38F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6A233BE-24F4-43E7-9AD6-EF9C4030D38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6A233BE-24F4-43E7-9AD6-EF9C4030D38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6A233BE-24F4-43E7-9AD6-EF9C4030D38F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24FD85E-30DB-4B72-9346-6593C30A1DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24FD85E-30DB-4B72-9346-6593C30A1DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24FD85E-30DB-4B72-9346-6593C30A1DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24FD85E-30DB-4B72-9346-6593C30A1DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08581B79-D42A-4DA9-9BCC-CB8CE1EA7844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08581B79-D42A-4DA9-9BCC-CB8CE1EA7844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08581B79-D42A-4DA9-9BCC-CB8CE1EA7844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08581B79-D42A-4DA9-9BCC-CB8CE1EA7844}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF30E951-2A70-452C-8610-977C0AFFC4EE}
+	EndGlobalSection
+EndGlobal

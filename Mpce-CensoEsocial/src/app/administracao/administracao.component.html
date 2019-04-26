@@ -1,0 +1,77 @@
+<div class="col-md-12" style="text-align: right;padding-right: 50px;">
+  <button class="btn btn-primary" type="submit" (click)="logout()">Sair</button>
+</div>
+<div class="loading" *ngIf=false>
+  <img src="./assets/img/carregando.gif" width="80"/>
+</div>
+<div>
+    <div style="margin-top: 35px; padding-left:10px;">
+        <b>Usuários cadastrados</b>
+    </div>
+    <br>
+    <form>
+        <div class="container">
+            <label class="control">
+                <input class="form-control" type="text" placeholder="Pesquisar" name="search" [(ngModel)]="filter">
+            </label>
+        </div>
+        <br>
+        <table class="row-border hover">
+            <thead>
+            <tr style="background-color: #EEE9E9">
+                <th width="160" style="text-align: center">Nome</th>
+                <th width="160" style="text-align: center">Email</th>
+                <th width="100" style="text-align: center">Observação</th>
+                <th width="100" style="text-align: center">Data Cadastro</th>
+                <th width="100" style="text-align: center">Data Atualização</th>
+                <th width="50" style="text-align: center">Status</th>
+                <th width="150" style="text-align: center">Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let trabalhador of trabalhadores | filter: filter | paginate: { id: 'paginar', itemsPerPage: 10, currentPage: page } ">
+                <th style="padding-left: 5px;">{{trabalhador.sNome}}</th>
+                <th style="padding-left: 5px;">{{trabalhador.sEmail}}</th>
+                <th style="padding-left: 5px;">
+                  <textarea name="observacao" id="observacao" [(ngModel)]="trabalhador.sDescricao" [value]="trabalhador.sDescricao" 
+                  [ngModelOptions]="{standalone:true}" style="width: 300px;font-weight: bold"></textarea> 
+                </th>
+                <th style="padding-left: 5px;text-align:center">
+                    {{datepipe.transform(trabalhador.dtCadastro, 'dd-MM-yyyy')}}
+                </th>
+                <th style="padding-left: 5px;text-align:center">
+                        {{datepipe.transform(trabalhador.dtUltimaAtualizacao, 'dd-MM-yyyy')}}
+                </th>
+                <th style="padding-left: 5px;" style="text-align: center;font-size:12px;">
+                    <select name="status" id="status" [(ngModel)]="trabalhador.iVerificado" 
+                    [ngModelOptions]="{standalone:true}" style="font-weight: bold">
+                        <option value="">Selecione</option>
+                        <option value="0">Aguardando Análise</option>
+                        <option value="1">Pendente</option>
+                        <option value="2">Concluído</option>
+                    </select>
+                </th>
+                <th style="text-align: center;">
+                    <a href="javascript: void(0)" (click)="visualizar(trabalhador.iCodigo)"  
+                    title="Visualizar Usuário">
+                        <i class="material-icons"><img src="./assets/img/lupa.png"></i>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    <a href="javascript: void(0)" (click)="salvar(trabalhador)"  
+                    title="Atualizar">
+                        <i class="material-icons"><img src="./assets/img/Save.png"></i>
+                    </a>
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    <a href="javascript: void(0)" (click)="enviarEmail(trabalhador)"  
+                    title="Enviar E-mail">
+                        <i class="material-icons"><img src="./assets/img/email.png"></i>
+                    </a>
+                </th>
+            </tr>
+        </tbody>
+</table>
+<div class="container">
+        <!--<pagination-controls id="paginar" (pageChange)="page = $event"></pagination-controls>-->
+        <pagination-controls id="paginar" (pageChange)="page = $event"></pagination-controls>
+    </div>
+</form>
